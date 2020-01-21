@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en-us">
+	<head>
+        <meta charset="utf-8">
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+        <meta name="theme-color" content="#2E282A" />
+        <meta content="width=device-width, initial-scale=1" name="viewport" />
+        <title>Ethan Andrew Portfolio</title>
+        <link rel="stylesheet" media="all" href="css/main.css">
+        <link rel="stylesheet" href="https://use.typekit.net/mmr0gck.css">
+		<link rel="icon" href="resources/images/favicon.png" type="image/x-icon">
+		
+		<!-- Unity --> <!--
+		<link rel="stylesheet" href="TemplateData/style.css">
+		<script src="TemplateData/UnityProgress.js"></script>
+		<script src="Build/UnityLoader.js"></script>
+		<script>
+			var gameInstance = UnityLoader.instantiate("gameContainer", "Build/Satan Is My Motor.json", {onProgress: UnityProgress});
+		</script> -->
+	</head>
+	<body>
+		<h3 id="end-game" onclick="openMenu();">Main menu</h3>
+		<div id="grayscale"></div>
+		<div class="gradient" id="gradient1"></div>
+		<div class="gradient" id="gradient2"></div>
+		
+		<!-- MAIN MENU -->
+		<div id="landing-menu">
+			<div class="title-box" style="width:620px;">
+				<h1>Hey, I'm Ethan.</h1>
+				<h2>I make games.</h2>
+			</div>
+			<h3 onclick="viewProjects()">view my projects</h3>
+			<h3>contact me</h3>
+			<a onclick="closeMenu()"><h3>play game</h3></a>
+		</div>
+		
+		<!-- PROJECTS MENU -->
+		<div id="projects-menu">
+			<div style="position:relative; top:50%; transform:translate(0,-50%);">
+				<div class="title-box" style="width:205px;margin-top:20px;">
+					<h2>Projects</h2>
+				</div>
+				<h3 onclick="viewProject(5);">ludicrous</h3>
+				<h3 onclick="viewProject(4);">zombie</h3>
+				<h3 onclick="viewProject(3);">capstone</h3>
+				<h3 onclick="viewProject(2);">balloon!</h3>
+				<h3 onclick="viewProject(1);">pong!</h3>
+				<br /><h3 onclick="viewMain();">back</h3>
+			</div>
+		</div>
+		
+		<!-- PROJECTS VIEWER -->
+		<div id="projects-viewer">
+			<div class="project" id="project-5">
+				<div class="title-box" style="width:440px">
+					<h2>Project Ludicrous</h2>
+				</div>
+				<p>The second in my line of short demos, this was an idea that I’ve had for awhile, but I didn’t have the knowledge to build until after I graduated. It’s a driving game, where the car is constantly speeding up, and you have to dodge around obstacles until it reaches a certain speed and you win. There are a few quality of life features I’m still working on, but I think the idea is a clever one, and I’m proud to finally have a working prototype.</p>
+			</div>
+		</div>
+		<!--add this code where you want the game to load--> <!--
+		<div class="webgl-content">
+			<div id="gameContainer" style="width: 960px; height: 600px"></div>
+			<div class="footer">
+				<div class="webgl-logo"></div>
+				<div class="fullscreen" onclick="gameInstance.SetFullscreen(1)"></div>
+				<div class="title">Satan is My Motor</div>
+			</div>
+		</div> -->
+		<script>
+			cssvar = document.documentElement.style; // .setProperty('cssvariable', 'value');
+			function closeMenu() {
+				document.getElementById("gradient1").style.opacity = '0';
+				document.getElementById("grayscale").style.opacity = '0';
+				document.getElementById("grayscale").style.pointerEvents = 'none';
+				document.getElementById("landing-menu").style.opacity = '0';
+				document.getElementById("landing-menu").style.pointerEvents = 'none';
+				document.getElementById("end-game").style.opacity = '1';
+			}
+			function openMenu() {
+				document.getElementById("gradient1").style.opacity = '0.85';
+				document.getElementById("grayscale").style.opacity = '1';
+				document.getElementById("grayscale").style.pointerEvents = 'all';
+				document.getElementById("landing-menu").style.opacity = '1';
+				document.getElementById("landing-menu").style.pointerEvents = 'auto';
+				document.getElementById("end-game").style.opacity = '0';
+			}
+			function changeGradient(newSetting) {
+				cssvar.setProperty('--gradient-transition', newSetting);
+				document.getElementById("gradient2").style.opacity = '0.85';
+				document.getElementById("gradient1").style.opacity = '0';
+				setTimeout(function() {
+					cssvar.setProperty('--gradient', newSetting);
+					document.getElementById("gradient1").style.opacity = '0.85';
+					document.getElementById("gradient2").style.opacity = '0';
+				}, 300)
+			}
+	//		function changeGradient(newSetting) {
+	//			cssvar.setProperty('--gradient-transition', newSetting);
+	//			document.getElementById("gradient2").style.opacity =  '0.85';
+	//			document.getElementById("gradient1").style.opacity = '0';
+	//			setTimeout(function() {
+	//				cssvar.setProperty('--gradient', newSetting);
+	//				document.getElementById("gradient1").style.opacity = '0.85';
+	//				document.getElementById("gradient2").style.opacity = '0';
+	//			}, 500)
+	//		}
+			function viewProjects() {
+				changeGradient('var(--gradient-projects)');
+				document.getElementById("landing-menu").style.left = '100%';
+				document.getElementById("projects-menu").style.right = '10px';
+				document.getElementById("project-viewer").style.left = '-100px';
+			}
+			function viewProject(projectId) {
+				changeGradient('var(--gradient-project)');
+				document.getElementById("project-"+projectId).style.display = 'block';
+				document.getElementById("projects-menu").style.right = 'calc(100% + 1000px)';
+				document.getElementById("project-viewer").style.left = '10px';
+			}
+			function viewContact() {
+				
+			}
+			function viewMain() {
+				changeGradient('var(--gradient-main)');
+				document.getElementById("landing-menu").style.left = '10px';
+				document.getElementById("projects-menu").style.right = 'calc(100% + 1000px)';
+			}
+		</script>
+	</body>
+</html>

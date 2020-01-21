@@ -1,0 +1,173 @@
+@charset "UTF-8";
+/* 
+FONTS:
+	•  moderno-fb, serif [weight: 400, 700; style: normal, italic]
+	•  moderno-fb-compressed ["]
+	•  moderno-fb-condensed ["]
+	•  moderno-fb-extra-condensed ["]
+	•  ubuntu-mono, monospace ["]
+*/
+:root {
+	/* FONTS */
+	--h1-font: forma-djr-text, sans-serif;
+	--h1-weight: 700;
+	--h1-style: normal;
+	--h1-size: 6em;
+	
+	--h2-font: forma-djr-text, sans-serif;
+	--h2-weight: 200;
+	--h2-style: normal;
+	--h2-size: 4em;
+	
+	--h3-font: forma-djr-text, sans-serif;
+	--h3-weight: 200;
+	--h3-style: normal;
+	--h3-size: 3em;
+	
+	--p-font: forma-djr-text, sans-serif;
+	--p-weight: 200;
+	--p-style: normal;
+	--p-size: 2em;
+	
+	/* GRADIENTS */
+	--gradient: var(--gradient-main);
+	--gradient-transition: var(--gradient-main);
+	--gradient-main: linear-gradient(45deg, indigo, darkorange);
+	--gradient-projects: linear-gradient(45deg, blue, red);
+	--gradient-project: linear-gradient(45deg, lime, hotpink);
+}
+body {
+	margin: 0;
+	line-height: 0.1;
+	overflow: hidden;
+}
+#grayscale {
+	z-index: 9;
+	position: absolute;
+	pointer-events: all;
+	width: 100%;
+	height: 100%;
+	top: 0;
+	left: 0;
+	backdrop-filter: grayscale() contrast(1.5);
+}
+.gradient {
+	width: 100%;
+	height: 100%;
+	position: absolute;
+	pointer-events: none;
+	z-index: 10;
+	top: 0;
+	left: 0;
+}
+#gradient1 {
+	transition: opacity 0.6s;
+	background: var(--gradient);
+	opacity: 0.85;
+}
+#gradient2 {
+	transition: opacity 1s;
+	background: var(--gradient-transition);
+	opacity: 0;
+}
+#end-game {
+	color: white;
+	z-index: 1000;
+	position: absolute;
+	top: 0;
+	left: 5px;
+	font-size: var(--p-size);
+	opacity: 0;
+}
+#landing-menu {
+	transition: left 1s, top 1s;
+	z-index: 1000;
+	position: absolute;
+	top: 50%;
+	left: 10px;
+	color: white;
+	transform: translate(0, -50%);
+}
+h3:hover {
+	color: yellow;
+	transition: color 1s;
+}
+.title-box {
+	border: solid 1px white;
+	padding: 13px 20px 0px 20px;
+	transition: font-size 0.5s;
+}
+#main-title {
+	width: 620px;
+}
+#hero {
+	position: absolute;
+	background: lightgray;
+	text-align: left;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+}
+h1 {
+	font-family: var(--h1-font);
+	font-weight: var(--h1-weight);
+	font-style: var(--h1-style);
+	font-size: var(--h1-size);
+	z-index: 1000;
+}
+h2 {
+	font-family: var(--h2-font);
+	font-weight: var(--h2-weight);
+	font-style: var(--h2-style);
+	font-size: var(--h2-size);
+}
+h3 {
+	font-family: var(--h3-font);
+	font-weight: var(--h3-weight);
+	font-style: var(--h3-style);
+	font-size: var(--h3-size);
+	cursor: pointer;
+}
+p {
+	font-family: var(--p-font);
+	font-weight: var(--p-weight);
+	font-style: var(--p-style);
+	font-size: var(--p-size);
+	line-height: 1.2;
+}
+#projects-menu {
+	position: absolute;
+	top: 0;
+	right: calc(100% + 1000px);
+	text-align: right;
+	color: white;
+	z-index: 999;
+	transition: right 1s;
+	overflow-y: scroll;
+	height: 100%;
+}
+#projects-viewer {
+	left: -100%;
+	width: 100%;
+	height: 100%;
+	color: white;
+	z-index: 900;
+	position: absolute;
+	transition: left 1s;
+}
+.project {
+	display: none;
+}
+#nitrome_game_container {
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%) scale(1.8);
+}
+@media only screen and (max-width: 680px) {
+	#title-box {
+		width: 100%;
+		font-size: 0.5em;
+	}
+}
