@@ -1,6 +1,6 @@
 @charset "UTF-8";
 /* 
-FONTS:
+AVAILABLE FONTS:
 	•  moderno-fb, serif [weight: 400, 700; style: normal, italic]
 	•  moderno-fb-compressed ["]
 	•  moderno-fb-condensed ["]
@@ -93,6 +93,8 @@ body { /* Values assigned to body apply to the whole html document */
 	left: 5px;
 	font-size: var(--p-size);
 	opacity: 0;
+    text-shadow: 0px 0px 1px black;
+    pointer-events: none;
 }
 #landing-menu { /* Container for the main menu */
 	transition: left 1s, top 1s;
