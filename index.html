@@ -9,6 +9,8 @@
         <link rel="stylesheet" media="all" href="css/main.css">
         <link rel="stylesheet" href="https://use.typekit.net/mmr0gck.css">
 		<link rel="icon" href="resources/images/favicon.png" type="image/x-icon">
+        
+        <!-- UNITY HEAD -->
         <link rel="stylesheet" href="TemplateData/style.css">
         <script src="TemplateData/UnityProgress.js"></script>
         <script src="Build/UnityLoader.js"></script>
@@ -17,7 +19,11 @@
         </script>
 	</head>
 	<body>
+        
+        <!-- GAME CLOSE BUTTON -->
 		<h3 id="end-game" onclick="openMenu();">Main menu</h3>
+        
+        <!-- BACKGROUND FILTERS/GRADIENTS -->
 		<div id="grayscale"></div>
 		<div class="gradient" id="gradient1"></div>
 		<div class="gradient" id="gradient2"></div>
@@ -57,6 +63,8 @@
 				<p>The second in my line of short demos, this was an idea that I’ve had for awhile, but I didn’t have the knowledge to build until after I graduated. It’s a driving game, where the car is constantly speeding up, and you have to dodge around obstacles until it reaches a certain speed and you win. There are a few quality of life features I’m still working on, but I think the idea is a clever one, and I’m proud to finally have a working prototype.</p>
 			</div>
 		</div>
+        
+        <!-- UNITY CONTAINER -->
         <div class="webgl-content">
             <div id="unityContainer" style="width: 960px; height: 600px"></div>
             <div class="footer">
@@ -65,9 +73,11 @@
                 <div class="title">Luda</div>
             </div>
         </div>
+        
 		<script>
 			cssvar = document.documentElement.style; // .setProperty('cssvariable', 'value');
-			function closeMenu() {
+            
+			function closeMenu() { // Go to game from main menu
 				document.getElementById("gradient1").style.opacity = '0';
 				document.getElementById("grayscale").style.opacity = '0';
 				document.getElementById("grayscale").style.pointerEvents = 'none';
@@ -75,7 +85,7 @@
 				document.getElementById("landing-menu").style.pointerEvents = 'none';
 				document.getElementById("end-game").style.opacity = '1';
 			}
-			function openMenu() {
+			function openMenu() { // Return to main menu from game
 				document.getElementById("gradient1").style.opacity = '0.85';
 				document.getElementById("grayscale").style.opacity = '1';
 				document.getElementById("grayscale").style.pointerEvents = 'all';
@@ -83,7 +93,7 @@
 				document.getElementById("landing-menu").style.pointerEvents = 'auto';
 				document.getElementById("end-game").style.opacity = '0';
 			}
-			function changeGradient(newSetting) {
+			function changeGradient(newSetting) { // Change the background
 				cssvar.setProperty('--gradient-transition', newSetting);
 				document.getElementById("gradient2").style.opacity = '0.85';
 				document.getElementById("gradient1").style.opacity = '0';
@@ -103,22 +113,22 @@
 	//				document.getElementById("gradient2").style.opacity = '0';
 	//			}, 500)
 	//		}
-			function viewProjects() {
+			function viewProjects() { // Open project selection menu from main menu
 				changeGradient('var(--gradient-projects)');
 				document.getElementById("landing-menu").style.left = '100%';
 				document.getElementById("projects-menu").style.right = '10px';
 				document.getElementById("project-viewer").style.left = '-100px';
 			}
-			function viewProject(projectId) {
+			function viewProject(projectId) { // View project information from project selection menu
 				changeGradient('var(--gradient-project)');
 				document.getElementById("project-"+projectId).style.display = 'block';
 				document.getElementById("projects-menu").style.right = 'calc(100% + 1000px)';
 				document.getElementById("project-viewer").style.left = '10px';
 			}
-			function viewContact() {
+			function viewContact() { // View contact info from main menu
 				
 			}
-			function viewMain() {
+			function viewMain() { // Return to main menu from submenu
 				changeGradient('var(--gradient-main)');
 				document.getElementById("landing-menu").style.left = '10px';
 				document.getElementById("projects-menu").style.right = 'calc(100% + 1000px)';
