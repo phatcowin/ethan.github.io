@@ -3,12 +3,12 @@
 	<head>
         <meta charset="utf-8">
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-        <meta name="theme-color" content="#2E282A" />
+        <meta name="theme-color" content="#2E282A" /> <!-- Change this to alter the color of the tab/url bar on Android devices -->
         <meta content="width=device-width, initial-scale=1" name="viewport" />
-        <title>Ethan Andrew Portfolio</title>
+        <title>Ethan Andrew Portfolio</title> <!-- Change this to alter the title shown in the tab bar -->
         <link rel="stylesheet" media="all" href="css/main.css">
-        <link rel="stylesheet" href="https://use.typekit.net/mmr0gck.css">
-		<link rel="icon" href="resources/images/favicon.png" type="image/x-icon">
+        <link rel="stylesheet" href="https://use.typekit.net/mmr0gck.css"> 
+		<link rel="icon" href="resources/images/favicon.png" type="image/x-icon"> <!-- Change this to alter the icon shown in the tab bar -->
         
         <!-- UNITY HEAD -->
         <link rel="stylesheet" href="TemplateData/style.css">
@@ -17,6 +17,7 @@
         <script>
             var unityInstance = UnityLoader.instantiate("unityContainer", "Build/LudaWebGLBuild.json", {onProgress: UnityProgress});
         </script>
+        
 	</head>
 	<body>
         
@@ -30,7 +31,7 @@
 		
 		<!-- MAIN MENU -->
 		<div id="landing-menu">
-			<div class="title-box" style="width:620px;">
+			<div class="title-box" style="width:620px;"> <!-- width:620px ensures the title box loads at an appropriate size between devices -->
 				<h1>Hey, I'm Ethan.</h1>
 				<h2>I make games.</h2>
 			</div>
@@ -45,18 +46,34 @@
 				<div class="title-box" style="width:205px;margin-top:20px;">
 					<h2>Projects</h2>
 				</div>
-				<h3 onclick="viewProject(5);">ludicrous</h3>
-				<h3 onclick="viewProject(4);">zombie</h3>
-				<h3 onclick="viewProject(3);">capstone</h3>
-				<h3 onclick="viewProject(2);">balloon!</h3>
-				<h3 onclick="viewProject(1);">pong!</h3>
-				<br /><h3 onclick="viewMain();">back</h3>
+                <!--  
+                Add new projects to the top. Follow the pattern of project below.
+                Adding projects here allows them to be selected in the projects selection menu, but project info must be added to the projects viewer section. 'x' in viewProject(x) must match 'x' in id="project-x" below. See index.html "PROJECTS VIEWER".
+                -->
+				<h3 onclick="viewProject(4);">ludicrous</h3>
+				<h3 onclick="viewProject(3);">zombie</h3>
+				<h3 onclick="viewProject(2);">capstone</h3>
+				<h3 onclick="viewProject(1);">balloon!</h3>
+				<h3 onclick="viewProject(0);">pong!</h3>
+				<br /><h3 onclick="viewMain();">back</h3> <!-- <br /> creates a gap between the back button and other list items. Makes the site more easily navigable. -->
 			</div>
 		</div>
 		
 		<!-- PROJECTS VIEWER -->
 		<div id="projects-viewer">
-			<div class="project" id="project-5">
+            <!-- 
+
+            Add new project info to this section. Below is a template for adding new entries. Pay close attention to 'id="project-x"' to avoid having project selection/information mismatches. It must match viewProject(x) above. See index.html "PROJECTS MENU".
+
+            <div class="project" id="project-x">
+                <div class="title-box" style="width: 440px">
+                    <h2>Project Title</h2>
+                </div>
+                <p>Project info. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec mollis dolor ligula, et placerat nisi ullamcorper sed. Curabitur non libero enim. Sed nec euismod massa, eget placerat nibh. Fusce ut lacinia arcu. Duis suscipit venenatis odio in tincidunt. Cras cursus a tortor a imperdiet. Curabitur commodo varius libero. Quisque in lorem dignissim, tempor ligula vitae, egestas sapien. Integer eros lectus, egestas ac dolor vel, vulputate cursus elit. Sed ac leo sollicitudin, eleifend neque sed, varius purus. Suspendisse lacinia velit at felis volutpat euismod.</p>
+            </div> 
+
+            -->
+			<div class="project" id="project-4">
 				<div class="title-box" style="width:440px">
 					<h2>Project Ludicrous</h2>
 				</div>
@@ -68,70 +85,66 @@
         <div class="webgl-content">
             <div id="unityContainer" style="width: 960px; height: 600px"></div>
             <div class="footer">
-                <div class="webgl-logo"></div>
-                <div class="fullscreen" onclick="unityInstance.SetFullscreen(1)"></div>
-                <div class="title">Luda</div>
+                <!-- <div class="fullscreen" onclick="unityInstance.SetFullscreen(1)"></div> -->
             </div>
         </div>
         
 		<script>
-			cssvar = document.documentElement.style; // .setProperty('cssvariable', 'value');
+			cssvar = document.documentElement.style; // Change :root css variables with the syntax "cssvar.setProperty('--cssvariable', 'value');"
             
 			function closeMenu() { // Go to game from main menu
-				document.getElementById("gradient1").style.opacity = '0';
-				document.getElementById("grayscale").style.opacity = '0';
-				document.getElementById("grayscale").style.pointerEvents = 'none';
-				document.getElementById("landing-menu").style.opacity = '0';
-				document.getElementById("landing-menu").style.pointerEvents = 'none';
-				document.getElementById("end-game").style.opacity = '1';
+				document.getElementById("gradient1").style.opacity = '0'; // Disable the gradient
+				document.getElementById("grayscale").style.opacity = '0'; // Disable the grayscale filter
+				document.getElementById("grayscale").style.pointerEvents = 'none'; // Allow the WebGL player to accept mouse inputs
+				document.getElementById("landing-menu").style.opacity = '0'; // Hide the main menu
+				document.getElementById("landing-menu").style.pointerEvents = 'none'; // Prevent the main menu from accepting mouse inputs
+				document.getElementById("end-game").style.opacity = '1'; // Show the end game option
+                document.getElementById("end-game").style.pointerEvents = "auto"; // Allow the end game option to accept mouse inputs
+                // New additions -- experimental
+                document.getElementById("unityContainer").style.display = "block"; // Display the WebGL player
+                
 			}
 			function openMenu() { // Return to main menu from game
-				document.getElementById("gradient1").style.opacity = '0.85';
-				document.getElementById("grayscale").style.opacity = '1';
-				document.getElementById("grayscale").style.pointerEvents = 'all';
-				document.getElementById("landing-menu").style.opacity = '1';
-				document.getElementById("landing-menu").style.pointerEvents = 'auto';
-				document.getElementById("end-game").style.opacity = '0';
+				document.getElementById("gradient1").style.opacity = '0.85'; // Enable the gradient
+				document.getElementById("grayscale").style.opacity = '1'; // Enable the grayscale filter
+				document.getElementById("grayscale").style.pointerEvents = 'all'; // Prevent the WebGL player from accepting mouse inputs
+				document.getElementById("landing-menu").style.opacity = '1'; // Show the main menu
+				document.getElementById("landing-menu").style.pointerEvents = 'auto'; // Allow the main menu to accept mouse inputs
+				document.getElementById("end-game").style.opacity = '0'; // Hide the end game option
+                document.getElementById("end-game").style.pointerEvents = 'none'; // Prevent the end game option from accepting mouse inputs
+                // New additions -- experimental
+                document.getElementById("unityContainer").style.display = 'none'; // Hide the WebGL player
 			}
 			function changeGradient(newSetting) { // Change the background
-				cssvar.setProperty('--gradient-transition', newSetting);
-				document.getElementById("gradient2").style.opacity = '0.85';
-				document.getElementById("gradient1").style.opacity = '0';
-				setTimeout(function() {
-					cssvar.setProperty('--gradient', newSetting);
-					document.getElementById("gradient1").style.opacity = '0.85';
-					document.getElementById("gradient2").style.opacity = '0';
-				}, 300)
+				cssvar.setProperty('--gradient-transition', newSetting); // Set the transitional gradient to the setting fed to the function
+				document.getElementById("gradient2").style.opacity = '0.85'; // Fade the transitional gradient in
+				document.getElementById("gradient1").style.opacity = '0'; // Fade the primary gradient out
+				setTimeout(function() { // Perform the following actions after a specified delay
+					cssvar.setProperty('--gradient', newSetting); // Set the primary gradient to the setting fed to the function
+					document.getElementById("gradient1").style.opacity = '0.85'; // Fade the primary gradient in
+					document.getElementById("gradient2").style.opacity = '0'; // Fade the transitional gradient out
+				}, 300) // Set the delay to 300 milleseconds
 			}
-	//		function changeGradient(newSetting) {
-	//			cssvar.setProperty('--gradient-transition', newSetting);
-	//			document.getElementById("gradient2").style.opacity =  '0.85';
-	//			document.getElementById("gradient1").style.opacity = '0';
-	//			setTimeout(function() {
-	//				cssvar.setProperty('--gradient', newSetting);
-	//				document.getElementById("gradient1").style.opacity = '0.85';
-	//				document.getElementById("gradient2").style.opacity = '0';
-	//			}, 500)
-	//		}
 			function viewProjects() { // Open project selection menu from main menu
-				changeGradient('var(--gradient-projects)');
-				document.getElementById("landing-menu").style.left = '100%';
-				document.getElementById("projects-menu").style.right = '10px';
-				document.getElementById("project-viewer").style.left = '-100px';
+				changeGradient('var(--gradient-projects)'); // Change the gradient to the value stored for the projects menu. See main.css :root.
+				document.getElementById("landing-menu").style.left = '100%'; // Move the main menu off-screen-right
+				document.getElementById("projects-menu").style.right = '10px'; // Move the projects menu to 10 pixels from the right side of the screen
+				document.getElementById("project-viewer").style.left = '-100px'; // Move the projects viewer off-screen-left
 			}
 			function viewProject(projectId) { // View project information from project selection menu
-				changeGradient('var(--gradient-project)');
-				document.getElementById("project-"+projectId).style.display = 'block';
-				document.getElementById("projects-menu").style.right = 'calc(100% + 1000px)';
-				document.getElementById("project-viewer").style.left = '10px';
+				changeGradient('var(--gradient-project)'); // Change the gradient to the value stored for the projects viewer. See main.css :root.
+                for (var i = 0; i < 5; i++) document.getElementById("project-"+i).style.display = 'none'; // This is a temporary line which hides all project info before displaying the selected project's info. In a future update I will hide a given project's info individually when returning to the main menu from the project viewer.
+				document.getElementById("project-"+projectId).style.display = 'block'; // Show info for the project whose number was fed to the function
+				document.getElementById("projects-menu").style.right = 'calc(100% + 1000px)'; // Move the projects menu off-screen-left. Additional 1000 pixels of movement increase the movement speed of the animation.
+				document.getElementById("project-viewer").style.left = '10px'; // Move the projects viewer to 10 pixels from the left side of the screen
 			}
 			function viewContact() { // View contact info from main menu
 				
 			}
 			function viewMain() { // Return to main menu from submenu
-				changeGradient('var(--gradient-main)');
-				document.getElementById("landing-menu").style.left = '10px';
-				document.getElementById("projects-menu").style.right = 'calc(100% + 1000px)';
+				changeGradient('var(--gradient-main)'); // Change the gradient to the value stored for the main menu. See main.css :root.
+				document.getElementById("landing-menu").style.left = '10px'; // Move the main menu to 10 pixels from the left side of the screen
+				document.getElementById("projects-menu").style.right = 'calc(100% + 1000px)'; // Move the projects menu to off-screen-left. Additional 1000 pixels of movement increase the movement speed of the animation.
 			}
 		</script>
 	</body>
