@@ -9,14 +9,12 @@
         <link rel="stylesheet" media="all" href="css/main.css">
         <link rel="stylesheet" href="https://use.typekit.net/mmr0gck.css">
 		<link rel="icon" href="resources/images/favicon.png" type="image/x-icon">
-		
-		<!-- Unity --> <!--
-		<link rel="stylesheet" href="TemplateData/style.css">
-		<script src="TemplateData/UnityProgress.js"></script>
-		<script src="Build/UnityLoader.js"></script>
-		<script>
-			var gameInstance = UnityLoader.instantiate("gameContainer", "Build/Satan Is My Motor.json", {onProgress: UnityProgress});
-		</script> -->
+        <link rel="stylesheet" href="TemplateData/style.css">
+        <script src="TemplateData/UnityProgress.js"></script>
+        <script src="Build/UnityLoader.js"></script>
+        <script>
+            var unityInstance = UnityLoader.instantiate("unityContainer", "Build/LudaWebGLBuild.json", {onProgress: UnityProgress});
+        </script>
 	</head>
 	<body>
 		<h3 id="end-game" onclick="openMenu();">Main menu</h3>
@@ -59,15 +57,14 @@
 				<p>The second in my line of short demos, this was an idea that I’ve had for awhile, but I didn’t have the knowledge to build until after I graduated. It’s a driving game, where the car is constantly speeding up, and you have to dodge around obstacles until it reaches a certain speed and you win. There are a few quality of life features I’m still working on, but I think the idea is a clever one, and I’m proud to finally have a working prototype.</p>
 			</div>
 		</div>
-		<!--add this code where you want the game to load--> <!--
-		<div class="webgl-content">
-			<div id="gameContainer" style="width: 960px; height: 600px"></div>
-			<div class="footer">
-				<div class="webgl-logo"></div>
-				<div class="fullscreen" onclick="gameInstance.SetFullscreen(1)"></div>
-				<div class="title">Satan is My Motor</div>
-			</div>
-		</div> -->
+        <div class="webgl-content">
+            <div id="unityContainer" style="width: 960px; height: 600px"></div>
+            <div class="footer">
+                <div class="webgl-logo"></div>
+                <div class="fullscreen" onclick="unityInstance.SetFullscreen(1)"></div>
+                <div class="title">Luda</div>
+            </div>
+        </div>
 		<script>
 			cssvar = document.documentElement.style; // .setProperty('cssvariable', 'value');
 			function closeMenu() {
