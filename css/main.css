@@ -183,6 +183,11 @@ p {
 }
 #unityContainer { /* unityContainer is not displayed by default so the game does not eat page resources in demo. Will be set to "display: block" via JS in index.html when the user selects "Play game". */
     display: none;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 100%;
+    transform: translate(-50%, -50%);
 }
 @media only screen and (max-width: 680px) { /* Applies the following attributes to devices with a viewport <= 680 CSS Pixels -- targeting mobile users */
 	#main-title { /* Scales the main title down for mobile devices */
