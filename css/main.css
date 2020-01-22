@@ -117,6 +117,11 @@ h3:hover { /* Causes the text to change when hovering above text with the tag <h
 #main-title { /* Stores attributes specific to the main title */
 	width: 620px;
 }
+@supports (-moz-appearance: none) { /* This implementation is a bit hack-ish but w/e. It targets browsers running gecko, Mozilla/Firefox's engine. */
+    #main-title {
+        font-size: 0.9em;
+    }
+}
 #hero {
 	position: absolute;
 	background: lightgray;
